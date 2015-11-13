@@ -1,12 +1,14 @@
-var SearchItemInArray = function(items, input) {
+var SearchItemInArray = function (items, input) {
+  if (input.trim() === '') {
+    return []
+  }
+  var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ''), 'i')
 
-    var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
-    
-    return items.filter(function(item) {
-      if (item.match(reg)) {
-        return item;
-      }
-    });
+  return items.filter(function (item) {
+    if (reg.test(item)) {
+      return item
+    }
+  })
 }
 
-module.exports = SearchItemInArray;
+module.exports = SearchItemInArray
